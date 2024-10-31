@@ -125,7 +125,15 @@ class Lightspeed_Inventory_Sync {
         $endpoint = '/Unit';
 
         if ($username && $password) {
+            if ($this->options['enable_debug']) {
+                $this->log_debug('Lightspeed Inventory Sync Started');
+            }
             $url = $this->api_url . $endpoint;
+            if ($this->options['enable_debug']) {
+                $this->log_debug('Lightspeed Inventory Sync URL: ' . $url);
+                $this->log_debug('Lightspeed Inventory Sync Username: ' . $username);
+                $this->log_debug('Lightspeed Inventory Sync Password length: ' . strlen($password));
+            }
 
             $args = array(
                 'headers' => array(
